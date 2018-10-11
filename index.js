@@ -56,12 +56,12 @@ $( document ).ready(function(){
       "<table class='table table-hover' id='flexTable'>" +
         "<thead>" +
           "<tr>" +
-            "<th>Name</th>" +
-            "<th class='text-center'>ID</th>" +
-            "<th class='text-center'>Shift Length</th>" +
-            "<th class='text-center'>Start Time</th>" +
-            "<th class='text-center'>End Time</th>" +
-            "<th class='text-center'>Check In</th>" +
+            "<th class='font-weight-bold'>Name</th>" +
+            "<th class='text-center font-weight-bold'>ID</th>" +
+            "<th class='text-center font-weight-bold'>Shift Length</th>" +
+            "<th class='text-center font-weight-bold'>Start Time</th>" +
+            "<th class='text-center font-weight-bold'>End Time</th>" +
+            "<th class='text-center font-weight-bold'>Check In</th>" +
           "</tr>" +
         "</thead>" +
         "<tbody>"
