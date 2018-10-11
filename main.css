@@ -1,0 +1,23 @@
+.center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.no-line-height{
+  line-height: 0px !important;
+}
+
+#mysearchbar {
+  margin-top: 10px;
+}
+#getDataButton {
+  color: #017BFF;
+}
+
+#getDataButton:hover {
+  color: #FFFFFF;
+}
+/* .grey-out {
+  background-color: #E8E8E8;
+  color: #F8F8F8;
+} */
