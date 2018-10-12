@@ -12,12 +12,8 @@
       "matches": [
         "<all_urls>"
       ],
-      "js": ["jquery-3.3.1.min.js", "index.js" ],
+      "js": ["bundle.js" ],
       "css": ["bootstrap.min.css", "main.css"]
     }
-  ],
-  "background":
-  {
-    "scripts": ["jquery-3.3.1.min.js"]
-  }
+  ]
 }

@@ -1,4 +1,9 @@
+import $ from 'jquery';
+import io from 'socket.io-client';
+
 $( document ).ready(function(){
+
+  const socket = io('http://amazon-yard.herokuapp.com');
   const getDataButton = document.createElement('button');
   getDataButton.innerText = 'Create Roster';
   getDataButton.id = 'getDataButton';
@@ -152,54 +157,58 @@ $( document ).ready(function(){
 
     table += "</tbody></table>"
     $('.fp-container').before(table);
+
+    //socket.emit('rosterTable', {data: table})
+    socket.emit('newBlock', table)
   }
 
   function getCheckbox(){
     let id, tr, bool, name, shiftLength, startTime, endTime, block, rosterData;
-    // $('input[type=checkbox]').click(function(){
-    //   id = $(this)[0].defaultValue;
-    //   bool = $(this).is(":checked");
-    //
-    //   tr = ($('tr#' + id));
-    //
-    //   name = tr[0].children[0].innerText;
-    //   shiftLength = tr[0].children[2].innerText;
-    //   startTime = tr[0].children[3].innerText;
-    //   endTime = tr[0].children[4].innerText;
-    //   block = (startTime + " - " + endTime).replace(/[\s\:]/g, '');
-    //   rosterData = $('tr#' + block)
-    //
-    //   if(!bool){
-    //     rosterData[0].children[2].innerText++;
-    //     rosterData[0].children[3].innerText--;
-    //   } else {
-    //     rosterData[0].children[2].innerText--;
-    //     rosterData[0].children[3].innerText++;
-    //   }
-    // })
+    $('tr.range-click').click(function(event){
 
-    $('tr.range-click').click(function(){
-      id = $(this)[0].id;
+      if(event.target.className != 'checkbox'){
+        id = $(this)[0].id;
 
-      bool = !($(this)[0].children[5].children[0].checked);
-      $(this)[0].children[5].children[0].checked = bool;
+        bool = !($(this)[0].children[5].children[0].checked);
+        $(this)[0].children[5].children[0].checked = bool;
 
-      name = $(this)[0].children[0].innerText;
-      shiftLength = $(this)[0].children[2].innerText;
-      startTime = $(this)[0].children[3].innerText;
-      endTime = $(this)[0].children[4].innerText;
-      block = (startTime + " - " + endTime).replace(/[\s\:]/g, '');
-      rosterData = $('tr#' + block)
-
-      if(bool){
-        //$(this).removeClass('grey-out');
-        rosterData[0].children[3].innerText++;
-        rosterData[0].children[4].innerText--;
+        name = $(this)[0].children[0].innerText;
+        shiftLength = $(this)[0].children[2].innerText;
+        startTime = $(this)[0].children[3].innerText;
+        endTime = $(this)[0].children[4].innerText;
+        block = (startTime + " - " + endTime).replace(/[\s\:]/g, '');
+        rosterData = $('tr#' + block)
+        if(bool){
+          rosterData[0].children[3].innerText++;
+          rosterData[0].children[4].innerText--;
+        } else {
+          rosterData[0].children[3].innerText--;
+          rosterData[0].children[4].innerText++;
+        }
+        const table = $('#counterTable')[0].outerHTML;
+        socket.emit('sameBlock', table);
       } else {
-        //$(this).addClass('grey-out');
-        rosterData[0].children[3].innerText--;
-        rosterData[0].children[4].innerText++;
+        id = $(this)[0].id;
+        bool = !($(this)[0].children[5].children[0].checked);
+        $(this)[0].children[5].children[0].checked = !bool;
+        tr = ($('tr#' + id));
+
+        startTime = tr[0].children[3].innerText;
+        endTime = tr[0].children[4].innerText;
+        block = (startTime + " - " + endTime).replace(/[\s\:]/g, '');
+        rosterData = $('tr#' + block)
+
+        if(!bool){
+          rosterData[0].children[3].innerText++;
+          rosterData[0].children[4].innerText--;
+        } else {
+          rosterData[0].children[3].innerText--;
+          rosterData[0].children[4].innerText++;
+        }
+        const table = $('#counterTable')[0].outerHTML;
+        socket.emit('sameBlock', table);
       }
+
     })
   }
 
