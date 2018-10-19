@@ -2,7 +2,18 @@
   text-align: center;
   vertical-align: middle;
 }
+.button-center {
+  float: right;
+  margin: 5px !important;
+}
 
+#hideDataButton {
+  color: #EFAC56;
+}
+
+#hideDataButton:hover {
+  color: #FFFFFF;
+}
 .no-line-height{
   line-height: 0px !important;
 }
@@ -17,7 +28,3 @@
 #getDataButton:hover {
   color: #FFFFFF;
 }
-/* .grey-out {
-  background-color: #E8E8E8;
-  color: #F8F8F8;
-} */

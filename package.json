@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --watch"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,9 @@
   "homepage": "https://github.com/k3vinyan/roster-overlay-chromeExtension#readme",
   "devDependencies": {
     "css-loader": "^1.0.0",
+    "image-webpack-loader": "^4.4.0",
     "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   },
@@ -26,6 +28,7 @@
     "@babel/core": "^7.1.2",
     "babel-loader": "^8.0.4",
     "jquery": "^3.3.1",
+    "moment": "^2.22.2",
     "socket.io-client": "^2.1.1"
   }
 }

@@ -16,6 +16,10 @@ const config = {
       {
         use: ['style-loader', 'css-loader'],
         test: /\.css$/
+      },
+      {
+        use: ['url-loader', 'image-webpack-loader'],
+        test: /\.(jpe?g|png|bmp|svg|gif)$/
       }
     ]
   },
